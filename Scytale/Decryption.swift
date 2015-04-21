@@ -20,7 +20,7 @@ class Decryption {
     func makeNewMessage() -> String {
         let filledMessage = fillEmptySpace(&insertedMessage, cipher: self.cipher)       //fill empty spaces in message to produce an even distribution of message to each row
         let plain = Array(filledMessage)        //Convert message string into an array of characters
-        let numberOfRows = countElements(plain)/cipher      //returns the number of rows to be used
+        let numberOfRows = count(plain)/cipher      //returns the number of rows to be used
         var decoded:[Character] = []        //Create empty array
         
         //inserting scrambled message into array
@@ -46,11 +46,11 @@ class Decryption {
     }
     
     func fillEmptySpace(inout updatedMessage:String, cipher:Int) -> String {
-        var remainder = countElements(updatedMessage)%cipher
+        var remainder = count(updatedMessage)%cipher
         
         while(remainder != 0) {
             updatedMessage += " "
-            remainder = countElements(updatedMessage)%cipher
+            remainder = count(updatedMessage)%cipher
         }
         
         return updatedMessage
